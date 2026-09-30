@@ -8,7 +8,7 @@
   "description": "A professional tactical playbook and matchup assistant for basketball coaches.",
   "icons": [
     {
-      "src": "https://img.icons8.com/color/512/basketball.png",
+      "src": "https://raw.githubusercontent.com/sgtprosports/SimpleBasketballPlaybook/main/logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
