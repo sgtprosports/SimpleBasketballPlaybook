@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coach's Counter-Defense Playbook</title>
+    <title>Coach's Master Tactical Playbook</title>
     <style>
         :root {
             --primary: #ff6600;
@@ -12,98 +12,204 @@
             --text: #ffffff;
             --text-muted: #b0b0b0;
         }
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: var(--bg); color: var(--text); text-align: center; }
-        h1 { margin-bottom: 5px; }
-        p.subtitle { color: var(--text-muted); margin-bottom: 25px; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 15px; background: var(--bg); color: var(--text); text-align: center; }
+        h1 { margin-bottom: 5px; font-size: 22px; }
+        p.subtitle { color: var(--text-muted); margin-bottom: 20px; font-size: 13px; }
         
-        .defense-selector { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; }
-        .def-btn { background: #2d2d2d; color: var(--text); border: 2px solid #444; padding: 10px 18px; font-size: 14px; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.2s; }
-        .def-btn:hover, .def-btn.active { background: var(--primary); border-color: var(--primary); }
+        .category-section { margin-bottom: 15px; text-align: left; background: #1a1a1a; padding: 10px; border-radius: 8px; }
+        .category-title { font-size: 14px; color: var(--primary); margin: 0 0 8px 5px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .defense-selector { display: flex; flex-wrap: wrap; gap: 6px; }
+        .def-btn { background: #2d2d2d; color: var(--text); border: 1px solid #444; padding: 6px 10px; font-size: 12px; font-weight: bold; cursor: pointer; border-radius: 6px; transition: 0.2s; }
+        .def-btn:hover, .def-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
 
-        .play-card { background: var(--card-bg); border-radius: 12px; max-width: 600px; margin: 0 auto; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: left; }
-        .play-title { font-size: 20px; color: var(--primary); margin-top: 0; }
+        .play-card { background: var(--card-bg); border-radius: 12px; max-width: 600px; margin: 20px auto 0 auto; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: left; }
+        .play-title { font-size: 18px; color: var(--primary); margin-top: 0; }
         
-        .court-diagram { width: 100%; height: 220px; background: #d28c46; border: 3px solid #fff; border-radius: 6px; position: relative; margin-bottom: 15px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #333; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+        .court-diagram { width: 100%; height: 200px; background: #d28c46; border: 3px solid #fff; border-radius: 6px; position: relative; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #333; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; text-align: center; padding: 0 10px; box-sizing: border-box; }
         
-        .instructions { font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; }
+        .instructions { font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 20px; }
         .instructions ul { padding-left: 20px; margin: 5px 0; }
 
         .play-links { display: flex; gap: 10px; }
-        .action-link { flex: 1; background: #333; color: var(--text); text-decoration: none; padding: 10px; text-align: center; border-radius: 6px; font-size: 14px; font-weight: bold; transition: 0.2s; }
+        .action-link { flex: 1; background: #333; color: var(--text); text-decoration: none; padding: 10px; text-align: center; border-radius: 6px; font-size: 13px; font-weight: bold; transition: 0.2s; }
         .action-link:hover { background: #444; color: var(--primary); }
     </style>
 </head>
 <body>
 
-    <h1>Tactical Matchup Finder</h1>
-    <p class="subtitle">Select the opponent's defense to instantly view counter-plays and diagrams.</p>
+    <h1>Master Tactical Playbook</h1>
+    <p class="subtitle">Select any set below to instantly view execution steps and tactical diagrams.</p>
 
-    <div class="defense-selector">
-        <button class="def-btn active" onclick="selectDefense('zone23', this)">2-3 Zone</label>
-        <button class="def-btn" onclick="selectDefense('zone131', this)">1-3-1 Zone</button>
-        <button class="def-btn" onclick="selectDefense('manc2man', this)">Man-to-Man</button>
-        <button class="def-btn" onclick="selectDefense('press', this)">Full-Court Press</button>
+    <!-- DEFENSIVE SETS -->
+    <div class="category-section">
+        <div class="category-title">Defensive Sets (15)</div>
+        <div class="defense-selector">
+            <button class="def-btn active" onclick="loadPlay('def_man_deny', this)">1. Man Deny</button>
+            <button class="def-btn" onclick="loadPlay('def_pack_line', this)">2. Pack Line</button>
+            <button class="def-btn" onclick="loadPlay('def_zone_23', this)">3. 2-3 Zone</button>
+            <button class="def-btn" onclick="loadPlay('def_zone_32', this)">4. 3-2 Zone</button>
+            <button class="def-btn" onclick="loadPlay('def_zone_131', this)">5. 1-3-1 Zone</button>
+            <button class="def-btn" onclick="loadPlay('def_box_one', this)">6. Box-and-One</button>
+            <button class="def-btn" onclick="loadPlay('def_tri_two', this)">7. Triangle & 2</button>
+            <button class="def-btn" onclick="loadPlay('def_press_diam', this)">8. Diamond Press</button>
+            <button class="def-btn" onclick="loadPlay('def_press_man', this)">9. Full Man Press</button>
+            <button class="def-btn" onclick="loadPlay('def_press_221', this)">10. 2-2-1 Press</button>
+            <button class="def-btn" onclick="loadPlay('def_hedge_rec', this)">11. Hedge & Recover</button>
+            <button class="def-btn" onclick="loadPlay('def_switching', this)">12. Switching</button>
+            <button class="def-btn" onclick="loadPlay('def_trap_post', this)">13. Trap Post</button>
+            <button class="def-btn" onclick="loadPlay('def_drop_cov', this)">14. Drop Coverage</button>
+            <button class="def-btn" onclick="loadPlay('def_run_jump', this)">15. Run & Jump</button>
+        </div>
+    </div>
+
+    <!-- OFFENSIVE SETS -->
+    <div class="category-section">
+        <div class="category-title">Offensive Sets (15)</div>
+        <div class="defense-selector">
+            <button class="def-btn" onclick="loadPlay('off_horns', this)">1. Horns</button>
+            <button class="def-btn" onclick="loadPlay('off_princeton', this)">2. Princeton</button>
+            <button class="def-btn" onclick="loadPlay('off_motion', this)">3. Motion</button>
+            <button class="def-btn" onclick="loadPlay('off_14high', this)">4. 1-4 High</button>
+            <button class="def-btn" onclick="loadPlay('off_flex', this)">5. Flex</button>
+            <button class="def-btn" onclick="loadPlay('off_triangle', this)">6. Triangle</button>
+            <button class="def-btn" onclick="loadPlay('off_ddom', this)">7. DDOM Overload</button>
+            <button class="def-btn" onclick="loadPlay('off_dbl_stack', this)">8. Double Stack</button>
+            <button class="def-btn" onclick="loadPlay('off_chin', this)">9. Chin</button>
+            <button class="def-btn" onclick="loadPlay('off_iso', this)">10. ISO Clear</button>
+            <button class="def-btn" onclick="loadPlay('off_high_low', this)">11. High-Low</button>
+            <button class="def-btn" onclick="loadPlay('off_shuffle', this)">12. Shuffle</button>
+            <button class="def-btn" onclick="loadPlay('off_ucla', this)">13. UCLA Cut</button>
+            <button class="def-btn" onclick="loadPlay('off_4out', this)">14. 4-Out 1-In</button>
+            <button class="def-btn" onclick="loadPlay('off_3out', this)">15. 3-Out 2-In</button>
+        </div>
+    </div>
+
+    <!-- PRESS BREAKS -->
+    <div class="category-section">
+        <div class="category-title">Press Breaks (Full & Half Court)</div>
+        <div class="defense-selector">
+            <button class="def-btn" onclick="loadPlay('pb_full_diamond', this)">Full: Diamond</button>
+            <button class="def-btn" onclick="loadPlay('pb_full_sideline', this)">Full: Sideline</button>
+            <button class="def-btn" onclick="loadPlay('pb_full_long', this)">Full: Long Ball</button>
+            <button class="def-btn" onclick="loadPlay('pb_half_reverse', this)">Half: Reverse</button>
+            <button class="def-btn" onclick="loadPlay('pb_half_blitz', this)">Half: Blitz Ctr</button>
+            <button class="def-btn" onclick="loadPlay('pb_half_flash', this)">Half: Flash Pivot</button>
+        </div>
+    </div>
+
+    <!-- INBOUNDS & SIDELINES -->
+    <div class="category-section">
+        <div class="category-title">Inbounds & Sideline Plays</div>
+        <div class="defense-selector">
+            <button class="def-btn" onclick="loadPlay('ib_box_lob', this)">BLOB: Box Lob</button>
+            <button class="def-btn" onclick="loadPlay('ib_shooter_scr', this)">BLOB: Shooter Scr</button>
+            <button class="def-btn" onclick="loadPlay('ib_return_layup', this)">BLOB: Return Cut</button>
+            <button class="def-btn" onclick="loadPlay('ib_box_counter', this)">BLOB: Box Ctr</button>
+            <button class="def-btn" onclick="loadPlay('ib_square_cut', this)">BLOB: Square Cut</button>
+            <button class="def-btn" onclick="loadPlay('sl_right_1', this)">SL Right: UCLA</button>
+            <button class="def-btn" onclick="loadPlay('sl_right_2', this)">SL Right: Stagger</button>
+            <button class="def-btn" onclick="loadPlay('sl_right_3', this)">SL Right: DHO ISO</button>
+            <button class="def-btn" onclick="loadPlay('sl_left_1', this)">SL Left: Horns</button>
+            <button class="def-btn" onclick="loadPlay('sl_left_2', this)">SL Left: Backdoor</button>
+            <button class="def-btn" onclick="loadPlay('sl_left_3', this)">SL Left: Drive ISO</button>
+        </div>
+    </div>
+
+    <!-- LAST SECOND PLAYS -->
+    <div class="category-section">
+        <div class="category-title">Last Second Game Winners</div>
+        <div class="defense-selector">
+            <button class="def-btn" onclick="loadPlay('ls_full', this)">Full Court (0.8s)</button>
+            <button class="def-btn" onclick="loadPlay('ls_3qtr', this)">3/4 Court (3-5s)</button>
+            <button class="def-btn" onclick="loadPlay('ls_half', this)">Half Court (5-8s)</button>
+            <button class="def-btn" onclick="loadPlay('ls_side', this)">Sideline (3s)</button>
+            <button class="def-btn" onclick="loadPlay('ls_under', this)">Under Basket (2-4s)</button>
+        </div>
     </div>
 
     <div class="play-card" id="playCardDisplay">
         <h2 class="play-title" id="playTitle">Loading Play...</h2>
-        <div class="court-diagram" id="playDiagram">Half-Court Diagram</div>
-        <div class="instructions" id="playInstructions">Select a defense above to review the playbook strategy.</div>
+        <div class="court-diagram" id="playDiagram">Court Layout</div>
+        <div class="instructions" id="playInstructions">Select a play above to review strategy.</div>
         <div class="play-links">
-            <a href="#" class="action-link" onclick="alert('Opening full video breakdown...'); return false;">▶ Watch Play Video</a>
-            <a href="#" class="action-link" onclick="alert('Exporting play to PDF/Clipboard...'); return false;">📋 Export Playbook</a>
+            <a href="#" class="action-link" onclick="alert('Opening video breakdown...'); return false;">▶ Watch Video</a>
+            <a href="#" class="action-link" onclick="alert('Exporting play to PDF...'); return false;">📋 Export Play</a>
         </div>
     </div>
 
     <script>
         const playbookData = {
-            zone23: {
-                title: "1-4 High Overload Attack",
-                diagramText: "2-3 Zone Breakdown: High Post Entry",
-                steps: [
-                    "<b>Goal:</b> Collapse the zone low and create a 2-on-1 advantage at the elbow.",
-                    "<b>Execution:</b> Set guards at the wings, place a forward at the high post (elbow), and move the center to the short corner.",
-                    "<b>Primary Read:</b> Pass to the high post forces the zone center to step up, freeing the short corner baseline cut for an uncontested layup."
-                ]
-            },
-            zone131: {
-                title: "Short Corner & Deep Wings Set",
-                diagramText: "1-3-1 Zone Attack: Guarding the Apex",
-                steps: [
-                    "<b>Goal:</b> Neutralize the aggressive trapping chaser at the top of the key.",
-                    "<b>Execution:</b> Spread players immediately to the deep corners and long wings to stretch the single-defender baseline coverage.",
-                    "<b>Primary Read:</b> Quick skip pass from wing to corner forces the sliding wing defender out of position, opening interior passing lanes."
-                ]
-            },
-            manc2man: {
-                title: "Horns Flex Screen Continuity",
-                diagramText: "Man-to-Man: High Screen & Roll",
-                steps: [
-                    "<b>Goal:</b> Force switches or create separation using staggered screens away from the ball.",
-                    "<b>Execution:</b> Point guard initiates from the top in Horns alignment, receiving a double screen at the elbow.",
-                    "<b>Primary Read:</b> Look for the roll-man diving to the rim or kick out to the shooter popping to the wing."
-                ]
-            },
-            press: {
-                title: "1-2-1-1 Diamond Press Break",
-                diagramText: "Full-Court Press: Overcoming the Trap",
-                steps: [
-                    "<b>Goal:</b> Safely advance the ball past half-court without committing a 10-second violation.",
-                    "<b>Execution:</b> Position an inbounder, a safety flash option in the middle, two wing guards along sideline corridors, and a deep safety.",
-                    "<b>Primary Read:</b> Pass to the middle flash option immediately splits the trap and turns defense into a 4-on-3 fast break."
-                ]
-            }
+            // DEFENSIVE SETS
+            def_man_deny: { title: "Man-to-Man: Pressure Deny", diagram: "Full Pressure - Deny First Pass", steps: ["<b>Goal:</b> Disrupt offensive rhythm and deny easy perimeter entries.", "<b>Execution:</b> Ball pressure on the point guard with denial stance on wings.", "<b>Read:</b> Force baseline or trap ball screens."] },
+            def_pack_line: { title: "Pack Line Defense", diagram: "Help-Side Gap Containment", steps: ["<b>Goal:</b> Prevent paint penetration and clog driving lanes.", "<b>Execution:</b> Defenders off the ball step inside an imaginary 16-foot arc.", "<b>Read:</b> Contest jump shots quickly upon kick-out passes."] },
+            def_zone_23: { title: "2-3 Zone Defense", diagram: "Paint Protection Setup", steps: ["<b>Goal:</b> Lock down the interior and force perimeter jumpers.", "<b>Execution:</b> Two guards up top, three defenders across the lane and corners.", "<b>Read:</b> Rotate quickly to high-post entries and short corners."] },
+            def_zone_32: { title: "3-2 Zone Defense", diagram: "Perimeter Extension", steps: ["<b>Goal:</b> Neutralize three-point shooting teams.", "<b>Execution:</b> Three guards extended on top, two forwards protecting the baseline.", "<b>Read:</b> Collapse to the blocks on deep post entries."] },
+            def_zone_131: { title: "1-3-1 Zone Defense", diagram: "Trapping Chaser Line", steps: ["<b>Goal:</b> Force turnovers and trap sideline carriers.", "<b>Execution:</b> One chaser at top, three-man line across wings, one safety deep.", "<b>Read:</b> Anticipate skip passes to spark fast breaks."] },
+            def_box_one: { title: "Box-and-One Defense", diagram: "Four-Zone Box + One Stopper", steps: ["<b>Goal:</b> Shut down the opponent's star scorer.", "<b>Execution:</b> Four defenders play box zone in paint; best defender face-guards star.", "<b>Read:</b> Deny ball reception to the targeted player at all costs."] },
+            def_tri_two: { title: "Triangle-and-Two Defense", diagram: "Three Zone + Two Lockdowns", steps: ["<b>Goal:</b> Neutralize the opponent's top two offensive threats.", "<b>Execution:</b> Three players zone-guard the dominant side; two lock down shooters man-to-man.", "<b>Read:</b> Force action away from locked-down targets."] },
+            def_press_diam: { title: "Full-Court 1-2-1-1 Diamond Press", diagram: "Backcourt Trapping Formation", steps: ["<b>Goal:</b> Force 10-second violations and backcourt steals.", "<b>Execution:</b> Diamond setup trapping the inbound pass and sideline advances.", "<b>Read:</b> Anticipate cross-court floaters."] },
+            def_press_man: { title: "Full-Court Man-to-Man Press", diagram: "Full Denial Man Pressure", steps: ["<b>Goal:</b> Deny clean inbound and pressure full court.", "<b>Execution:</b> Tight man-to-man checking across all 94 feet.", "<b>Read:</b> Switch on screens and contest lob passes."] },
+            def_press_221: { title: "Full-Court 2-2-1 Zone Press", diagram: "Timeline Trap Defense", steps: ["<b>Goal:</b> Slow transition and trap at half-court.", "<b>Execution:</b> Two guards up top, two forwards at mid-court, safety deep.", "<b>Read:</b> Shift to half-court zone once ball crosses timeline."] },
+            def_hedge_rec: { title: "Hedge-and-Recover Screen Defense", diagram: "Ball Screen Containment", steps: ["<b>Goal:</b> Delay ball handler off high pick-and-rolls.", "<b>Execution:</b> Screener's defender steps out hard ('hedges') then sprints back.", "<b>Read:</b> Contain slip pass to the roll-man."] },
+            def_switching: { title: "Switching Defense", diagram: "Man-to-Man Automatic Switches", steps: ["<b>Goal:</b> Prevent separation on screens.", "<b>Execution:</b> Adjacent defenders verbally and physically switch assignments instantly.", "<b>Read:</b> Match physical mismatches quickly in the post."] },
+            def_trap_post: { title: "Trap-the-Post Defense", diagram: "Low Block Double-Team", steps: ["<b>Goal:</b> Force hurried passes from dominant post players.", "<b>Execution:</b> Nearest perimeter defender drops immediately to double the post touch.", "<b>Read:</b> Rotate weak-side defenders to cover passing outlets."] },
+            def_drop_cov: { title: "Drop Coverage Ball Screens", diagram: "Big Man Rim Protection Drop", steps: ["<b>Goal:</b> Prevent paint layups while guarding pull-up jumpers.", "<b>Execution:</b> On-ball defender fights over screen; big man drops deep into paint.", "<b>Read:</b> Guard contests mid-range jumper; big seals roll path."] },
+            def_run_jump: { title: "Run-and-Jump Press", diagram: "Unpredictable Trapping Defense", steps: ["<b>Goal:</b> Surprise ball handler with sudden double-teams.", "<b>Execution:</b> Any pass or dribble near sideline triggers an immediate two-man trap.", "<b>Read:</b> Rotate active defenders to fill passing lanes."] },
+
+            // OFFENSIVE SETS
+            off_horns: { title: "Horns Alignment Set", diagram: "Two Elbows & Two Corners", steps: ["<b>Goal:</b> Open high pick-and-roll opportunities.", "<b>Execution:</b> Guards at top, bigs at elbows, corners spaced.", "<b>Read:</b> Pass to elbow initiates drive or roll-man pass."] },
+            off_princeton: { title: "Princeton Offense", diagram: "Constant Backdoor Cutting", steps: ["<b>Goal:</b> Generate backdoor layups and open jump shots.", "<b>Execution:</b> Patient passing, cutting, and screening away from the ball.", "<b>Read:</b> Take backdoor cut if defender overplays passing lane."] },
+            off_motion: { title: "Motion Read-and-React Offense", diagram: "Spacing & Perimeter Continuity", steps: ["<b>Goal:</b> Flow seamlessly based on defensive overplays.", "<b>Execution:</b> Pass-and-cut, fill open spots, screen away.", "<b>Read:</b> Attack open gaps created by defensive help."] },
+            off_14high: { title: "1-4 High Set", diagram: "Double High Post Entries", steps: ["<b>Goal:</b> High-low passing and elbow isolations.", "<b>Execution:</b> Two post players at elbows, guards on wings.", "<b>Read:</b> Feed high post for quick baseline cuts."] },
+            off_flex: { title: "Flex Offense Continuity", diagram: "Screen-the-Screener Baseline Cuts", steps: ["<b>Goal:</b> Generate open layups along the baseline.", "<b>Execution:</b> Continuous flex screens set for players cutting to the basket.", "<b>Read:</b> Pop out to perimeter if baseline cut is denied."] },
+            off_triangle: { title: "Triangle Offense Set", diagram: "Sideline Triad Spacing", steps: ["<b>Goal:</b> Create 2-on-2 and 1-on-1 isolation advantages.", "<b>Execution:</b> Corner, wing, and post form a triangle on one side.", "<b>Read:</b> Feed post or execute backdoor cuts from weak side."] },
+            off_ddom: { title: "DDOM Overload Attack", diagram: "Drive, Dish & Overload", steps: ["<b>Goal:</b> Collapse defense and find kick-out shooters.", "<b>Execution:</b> Guard drives hard to paint, forcing help from weak side.", "<b>Read:</b> Kick to open shooter on perimeter overload."] },
+            off_dbl_stack: { title: "Double Stack Offense", diagram: "Staggered Block Screens", steps: ["<b>Goal:</b> Free shooters coming off baseline screens.", "<b>Execution:</b> Two pairs stacked on blocks setting double screens.", "<b>Read:</b> Shooter curls or fades based on defender trailing."] },
+            off_chin: { title: "Chin Offense Series", diagram: "Elbow Hand-Off & Cuts", steps: ["<b>Goal:</b> Initiate flow via dribble hand-offs and screens.", "<b>Execution:</b> Point guard passes to elbow and cuts off screen.", "<b>Read:</b> Take hand-off for a pull-up jumper or drive."] },
+            off_iso: { title: "ISO Clear-Out Set", diagram: "Weak-Side Clearing Isolation", steps: ["<b>Goal:</b> Clear space for your best 1-on-1 scorer.", "<b>Execution:</b> Four players space the opposite side of the court.", "<b>Read:</b> Scorer attacks driving lane or pulls up."] },
+            off_high_low: { title: "High-Low Post Attack", diagram: "Elbow to Block Passing", steps: ["<b>Goal:</b> Exploit mismatched post defenders.", "<b>Execution:</b> High post catches and fires quick entry to low post.", "<b>Read:</b> Drop step and finish or kick out against double team."] },
+            off_shuffle: { title: "Shuffle Offense Continuity", diagram: "Shuffle Screen Lane Action", steps: ["<b>Goal:</b> Constant motion and passing on the wings.", "<b>Execution:</b> Shuffle screens set along the lane for cutters.", "<b>Read:</b> Pass to cutter or reset to top of key."] },
+            off_ucla: { title: "UCLA Cut Offense", diagram: "High Post Screen to Paint", steps: ["<b>Goal:</b> Easy layup for wing-to-high cutter.", "<b>Execution:</b> Guard passes to wing, then cuts off elbow screen to rim.", "<b>Read:</b> Lob or bounce pass if defender trails cutter."] },
+            off_4out: { title: "4-Out 1-In Motion", diagram: "Four Perimeter + One Post", steps: ["<b>Goal:</b> Maximum driving lanes with interior presence.", "<b>Execution:</b> Four shooters space perimeter; center anchors low block.", "<b>Read:</b> Dump down to center when help defense collapses."] },
+            off_3out: { title: "3-Out 2-In Balance Set", diagram: "Twin Towers Interior Screen", steps: ["<b>Goal:</b> Physical interior screening and rebounding.", "<b>Execution:</b> Three perimeter guards and two low-post big men.", "<b>Read:</b> Bigs set cross-screens for each other on the blocks."] },
+
+            // PRESS BREAKS
+            pb_full_diamond: { title: "1-2-1-1 Diamond Press Break", diagram: "Middle Flash Overload", steps: ["<b>Goal:</b> Safely break full-court traps.", "<b>Execution:</b> Inbounder passes to middle flash option to split trap.", "<b>Read:</b> Push 4-on-3 advantage downcourt."] },
+            pb_full_sideline: { title: "Sideline Overload Press Break", diagram: "Sideline Clearing Run", steps: ["<b>Goal:</b> Exploit sideline trap soft spots.", "<b>Execution:</b> Stack three players on one sideline.", "<b>Read:</b> Long diagonal pass to opposite streaking forward."] },
+            pb_full_long: { title: "Long-Ball Safety Press Break", diagram: "Deep Target Bomb", steps: ["<b>Goal:</b> Force defense out of press with deep threat.", "<b>Execution:</b> Tall target sprints deep behind half-court line.", "<b>Read:</b> Quick baseball pass if defense fails to drop back."] },
+            pb_half_reverse: { title: "Reverse-and-Flow Press Break", diagram: "Ball Reversal Reset", steps: ["<b>Goal:</b> Escape half-court trapping pressure.", "<b>Execution:</b> Quick reversal pass away from the trap.", "<b>Read:</b> Attack weak side before defense recovers."] },
+            pb_half_blitz: { title: "Ball Screen Blitz Counter", diagram: "Quick Corner Turn", steps: ["<b>Goal:</b> Beat ball-screen traps before they set.", "<b>Execution:</b> Guard uses immediate ball screen to turn corner.", "<b>Read:</b> Roll-man catches and attacks unbalanced defense."] },
+            pb_half_flash: { title: "Flash-Pivot Press Break", diagram: "High Post Relief Valve", steps: ["<b>Goal:</b> Provide middle relief against zone pressure.", "<b>Execution:</b> High-post player flashes to middle to catch.", "<b>Read:</b> Survey court and hit open cutters."] },
+
+            // INBOUNDS & SIDELINES
+            ib_box_lob: { title: "Box Stack Lob (BLOB)", diagram: "Block to Rim Lob", steps: ["<b>Goal:</b> Direct lob for an easy basket.", "<b>Execution:</b> Stacked players on block set screens for lob target.", "<b>Read:</b> Lob pass over top of defender."] },
+            ib_shooter_scr: { title: "Shooter Baseline Screen (BLOB)", diagram: "Double Baseline Screen", steps: ["<b>Goal:</b> Open three-pointer in corner.", "<b>Execution:</b> Double screen set along baseline for shooter.", "<b>Read:</b> Catch and shoot immediately."] },
+            ib_return_layup: { title: "Inbounder's Return Cut (BLOB)", diagram: "Pass and Cut Layup", steps: ["<b>Goal:</b> Quick return score for inbounder.", "<b>Execution:</b> Pass in and cut off screen back to rim.", "<b>Read:</b> Bounce pass for uncontested layup."] },
+            ib_box_counter: { title: "Box-Out Counter (BLOB)", diagram: "False Movement Seel", steps: ["<b>Goal:</b> Seal defender for low-post finish.", "<b>Execution:</b> False perimeter movement clears paint for center.", "<b>Read:</b> Quick entry pass to sealing post."] },
+            ib_square_cut: { title: "Square Cut Jumper (BLOB)", diagram: "Blind Screen Jumper", steps: ["<b>Goal:</b> Open mid-range jumper for inbounder.", "<b>Execution:</b> Blind screen allows inbounder to step into shot.", "<b>Read:</b> Catch and rhythm jump shot."] },
+            sl_right_1: { title: "Right Sideline: UCLA Cut", diagram: "Right Wing UCLA Action", steps: ["<b>Goal:</b> Quick paint entry from sideline.", "<b>Execution:</b> Pass to wing, cutter loops off elbow.", "<b>Read:</b> Layup or kick out."] },
+            sl_right_2: { title: "Right Sideline: Staggered Screen", diagram: "Right Wing Staggered Set", steps: ["<b>Goal:</b> Free shooter on wing.", "<b>Execution:</b> Staggered screens set for wing shooter.", "<b>Read:</b> Catch-and-shoot 3-pointer."] },
+            sl_right_3: { title: "Right Sideline: DHO ISO", diagram: "Right Wing Hand-Off Attack", steps: ["<b>Goal:</b> Dribble hand-off driving lane.", "<b>Execution:</b> Guard receives DHO attacking baseline.", "<b>Read:</b> Layup or pull-up jumper."] },
+            sl_left_1: { title: "Left Sideline: Horns Entry", diagram: "Left Side Horns Clear", steps: ["<b>Goal:</b> Clear strong side for isolation.", "<b>Execution:</b> Horns alignment initiates quick drive.", "<b>Read:</b> Drive to rim or kick to corner."] },
+            sl_left_2: { title: "Left Sideline: Backdoor Play", diagram: "Left Wing Backdoor Cut", steps: ["<b>Goal:</b> Exploit overplaying defender.", "<b>Execution:</b> Fake flare cut and hard backdoor slash.", "<b>Read:</b> Bounce pass for layup."] },
+            sl_left_3: { title: "Left Sideline: Drive ISO", diagram: "Left Wing Isolation", steps: ["<b>Goal:</b> 1-on-1 score from sideline.", "<b>Execution:</b> Clear out weak side for wing scorer.", "<b>Read:</b> Isolate and attack defender's hip."] },
+
+            // LAST SECOND PLAYS
+            ls_full: { title: "Full-Court Hail Mary (0.8 - 2.4s)", diagram: "Deep Rim Tip", steps: ["<b>Goal:</b> Buzzer-beating tip-in or catch.", "<b>Execution:</b> Deep baseball pass or screen lob to rim.", "<b>Read:</b> Catch and shoot instantly before clock expires."] },
+            ls_3qtr: { title: "Three-Quarter Court Corner Play (3 - 5s)", diagram: "Sideline Corner Sprint", steps: ["<b>Goal:</b> Quick two-pass sequence to corner shooter.", "<b>Execution:</b> Pushing sideline to catch and fire in corner.", "<b>Read:</b> Quick release 3-pointer."] },
+            ls_half: { title: "Half-Court High Screen (5 - 8s)", diagram: "Screen & Roll Game Winner", steps: ["<b>Goal:</b> High-percentage shot off pick-and-roll.", "<b>Execution:</b> High screen-and-roll with secondary option looping.", "<b>Read:</b> Drive to rim or kick to shooter."] },
+            ls_side: { title: "Sideline Out of Bounds (3s)", diagram: "Box Stack Buzzer Beater", steps: ["<b>Goal:</b> Quick catch-and-shoot jumper.", "<b>Execution:</b> Box stack screen springing shooter free.", "<b>Read:</b> Catch and shoot on balance."] },
+            ls_under: { title: "Under-Basket Inbound (2 - 4s)", diagram: "Quick Turnaround Layup", steps: ["<b>Goal:</b> Immediate paint finish.", "<b>Execution:</b> Flash screen allowing receiver to turn instantly.", "<b>Read:</b> Catch, turn, and shoot."] }
         };
 
-        function selectDefense(defenseKey, btnElement) {
-            // Update active button styles
+        function loadPlay(playKey, btnElement) {
             document.querySelectorAll('.def-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
 
-            // Load data into card
-            const data = playbookData[defenseKey];
+            const data = playbookData[playKey];
             document.getElementById('playTitle').innerText = data.title;
-            document.getElementById('playDiagram').innerText = data.diagramText;
+            document.getElementById('playDiagram').innerText = data.diagram;
             
             let listHtml = "<ul>";
             data.steps.forEach(step => {
@@ -115,7 +221,7 @@
         }
 
         // Initialize default view
-        selectDefense('zone23', document.querySelector('.def-btn'));
+        loadPlay('def_man_deny', document.querySelector('.def-btn'));
     </script>
 
 </body>
