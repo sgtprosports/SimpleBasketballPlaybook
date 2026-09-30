@@ -1,1 +1,16 @@
-
+{
+  "name": "MASTER BASKETBALL TACTICAL PLAYBOOK",
+  "short_name": "Playbook Pro",
+  "start_url": "/SimpleBasketballPlaybook/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#ff6b00",
+  "description": "A professional tactical playbook and matchup assistant for basketball coaches.",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/color/512/basketball.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
