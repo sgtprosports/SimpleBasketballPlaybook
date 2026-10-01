@@ -62,17 +62,14 @@
         .play-heading { font-size: 18px; font-weight: 700; color: var(--primary-blue); margin: 0; }
 
         /* COURT CANVAS: Classic wood color with white lines */
-        .court-canvas { width: 100%; height: 210px; background-color: #deb887; /* Burlywood wood color */ border: 3px solid var(--bg-white); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; margin-bottom: 15px; box-shadow: inset 0 0 15px rgba(0,0,0,0.2); text-align: center; padding: 15px; box-sizing: border-box; }
-        /* Court Lines (White) */
+        .court-canvas { width: 100%; height: 210px; background-color: #deb887; border: 3px solid var(--bg-white); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; margin-bottom: 15px; box-shadow: inset 0 0 15px rgba(0,0,0,0.2); text-align: center; padding: 15px; box-sizing: border-box; }
         .court-canvas::after { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: rgba(255, 255, 255, 0.8); transform: translateY(-50%); }
         .court-canvas::before { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: rgba(255, 255, 255, 0.8); transform: translateX(-50%); }
         .center-circle { position: absolute; top: 50%; left: 50%; width: 50px; height: 50px; border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 50%; transform: translate(-50%, -50%); }
         
-        /* Court Labels (Dark Blue on white base) */
         .court-title { font-size: 15px; font-weight: 900; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 1px; background: rgba(255, 255, 255, 0.9); padding: 5px 12px; border-radius: 4px; margin-bottom: 6px; z-index: 1; }
         .court-sub { font-size: 11px; font-weight: 700; color: var(--accent-red); background: rgba(255, 255, 255, 0.9); padding: 3px 8px; border-radius: 3px; z-index: 1; }
 
-        /* CONTENT BLOCK: Dark text on white, red headers */
         .content-block { font-size: 13px; line-height: 1.6; color: var(--text-dark); text-align: left; }
         .content-block h4 { color: var(--accent-red); font-size: 13px; text-transform: uppercase; margin: 15px 0 5px 0; letter-spacing: 0.5px; }
         .content-block ul { padding-left: 20px; margin: 5px 0; }
@@ -179,33 +176,34 @@
     <!-- DETAILED DISPLAY CARD -->
     <div class="display-container" id="displayBox">
         <div class="play-meta-header">
-            <h2 class="play-heading" id="displayTitle">Select a Play</h2>
-            <span class="tag" id="displayCategory">Tactical Board</span>
+            <h2 class="play-heading" id="displayTitle">Man-to-Man: Pressure Deny</h2>
+            <span class="tag" id="displayCategory">Defense</span>
         </div>
         
         <div class="court-canvas">
             <div class="center-circle"></div>
-            <div class="court-title" id="displayCourtTitle">Court Diagram Setup</div>
-            <div class="court-sub" id="displayCourtSub">Spatial Alignment & Spacing</div>
+            <div class="court-title" id="displayCourtTitle">Full Pressure Setup</div>
+            <div class="court-sub" id="displayCourtSub">Deny First Pass & Hip Alignment</div>
         </div>
 
         <div class="content-block">
             <h4>Core Objective & Strategy</h4>
-            <p id="displaySummary">Select any play or set above to view complete coaching breakdowns.</p>
+            <p id="displaySummary">An aggressive baseline defensive scheme designed to suffocate perimeter ball handlers and deny easy passing lanes across the entire half-court.</p>
             
             <h4>Execution Mechanics</h4>
             <ul id="displaySteps">
-                <li>Detailed coaching points will appear here instantly upon selection.</li>
+                <li><b>Ball Pressure:</b> On-ball defender dictates direction by sitting on the hip of the primary ball handler, forcing them away from the middle toward the sideline trap zones.</li>
+                <li><b>Perimeter Denial:</b> Adjacent wing defenders play in 'full denial' stance with one hand in the passing lane, forcing high arc lob passes if the offense attempts a skip.</li>
+                <li><b>Help & Recover:</b> Weak-side defenders drop one step into the paint to form an invisible wall, ready to stunt or take a charge on any interior driving attempts.</li>
             </ul>
 
             <h4>Key Coaching Read</h4>
-            <p id="displayCoachingTip">Focus on spacing, timing, and vocal communication.</p>
+            <p id="displayCoachingTip">Keep active feet and communicate ball screens early before the screener establishes contact.</p>
         </div>
     </div>
 
     <script>
         const playbookData = {
-            // DEFENSIVE SETS
             def_man_deny: {
                 category: "Defense",
                 title: "Man-to-Man: Pressure Deny",
@@ -401,8 +399,6 @@
                 ],
                 tip: "Requires high conditioning and seamless team trust in defensive rotations."
             },
-
-            // OFFENSIVE SETS
             off_horns: {
                 category: "Offense",
                 title: "Horns Alignment Set",
@@ -446,4 +442,475 @@
                 category: "Offense",
                 title: "1-4 High Set",
                 courtTitle: "Double High Post Entry",
-                courtSub: "High-Low Passing
+                courtSub: "High-Low Passing & Iso",
+                summary: "An offensive alignment placing four players across the free throw line extended and low blocks, giving the point guard room to operate.",
+                steps: [
+                    "<b>High Post Stacking:</b> Two forwards align at the elbows while two guards occupy the deep corners.",
+                    "<b>Isolation Drive:</b> Point guard attacks off a single high screen or drives straight through the middle seam.",
+                    "<b>High-Low Feed:</b> If the defense collapses, the point guard feeds the rolling elbow big for a high-low finish."
+                ],
+                tip: "Guards in the corners must stay ready to shoot when defenders help on the drive."
+            },
+            off_flex: {
+                category: "Offense",
+                title: "Flex Offense",
+                courtTitle: "Screen-the-Screener Continuity",
+                courtSub: "Baseline Flex Cuts",
+                summary: "A classic screen-the-screener continuity offense that wears down defenses with constant baseline cuts and disciplined passing.",
+                steps: [
+                    "<b>Flex Screen:</b> Guard on the wing sets a baseline screen for the weak-side corner player cutting toward the rim.",
+                    "<b>Down Screen:</b> After setting the flex screen, the screener receives a down screen from the high post.",
+                    "<b>Continuity Flow:</b> The offense resets seamlessly, flowing from one side of the floor to the other."
+                ],
+                tip: "Set legal, stationary screens to free up cutters for uncontested layups."
+            },
+            off_triangle: {
+                category: "Offense",
+                title: "Triple-Post (Triangle) Offense",
+                courtTitle: "Sideline Triangle Spacing",
+                courtSub: "Spacing & Read Execution",
+                summary: "The legendary championship offense featuring sideline triangle formations that create instant passing triangles and post isolation opportunities.",
+                steps: [
+                    "<b>Triangle Formation:</b> Guard on wing, big on post, and shooter in corner form a tight tactical triangle.",
+                    "<b>Entry & Post Feed:</b> Ball is swung to the wing, then fed directly into the low post player.",
+                    "<b>Weak-Side Action:</b> Off-side guard and forward execute a two-man game to occupy help defenders."
+                ],
+                tip: "Spacing is everything; players must maintain 15-foot separation at all times."
+            },
+            off_ddom: {
+                category: "Offense",
+                title: "DDOM Overload Offense",
+                courtTitle: "Strong-Side Overload",
+                courtSub: "Creating Numerical Advantage",
+                summary: "An offensive set that stacks three players on one side of the floor to overload zone defenses and force defensive breakdowns.",
+                steps: [
+                    "<b>The Overload:</b> Three offensive players occupy the strong-side wing, corner, and short corner.",
+                    "<b>Quick Ball Movement:</b> Ball swings rapidly among the three players to overwhelm zone defenders.",
+                    "<b>Weak-Side Skip:</b> When the defense shifts over, a lightning-fast skip pass finds the open shooter on the weak side."
+                ],
+                tip: "Make crisp, hard passes to prevent defenders from recovering in the passing lanes."
+            },
+            off_dbl_stack: {
+                category: "Offense",
+                title: "Double Stack Offense",
+                courtTitle: "Elbow Stack Alignment",
+                courtSub: "Staggered Screen Action",
+                summary: "An offensive set starting with two players stacked vertically at each elbow, springing shooters loose via staggered screens.",
+                steps: [
+                    "<b>The Stack:</b> Two pairs of players stack vertically along both elbows.",
+                    "<b>Staggered Action:</b> Shooter loops around both stacked teammates coming off simultaneous screens.",
+                    "<b>Roll & Pop:</b> Screeners pop to the perimeter or roll hard to the basket depending on defender coverage."
+                ],
+                tip: "Screeners must hold their ground to ensure the shooter gets clean separation."
+            },
+            off_chin: {
+                category: "Offense",
+                title: "Chin Offense Set",
+                courtTitle: "High Post Hub Action",
+                courtSub: "Backdoor & Guard-Big Give-and-Go",
+                summary: "A versatile continuity offense using the high post as a passing hub for backdoor cuts and guard-big give-and-gos.",
+                steps: [
+                    "<b>Post Flash:</b> Center flashes to the high post to receive the initial entry pass.",
+                    "<b>Give-and-Go:</b> Guard passes to the center and immediately cuts backdoor past their defender.",
+                    "<b>Perimeter Rotation:</b> Remaining players rotate around the arc to maintain floor balance."
+                ],
+                tip: "The high-post passer must deliver crisp bounce passes right into the cutter's hands."
+            },
+            off_iso: {
+                category: "Offense",
+                title: "Isolation Clearout Set",
+                courtTitle: "4-Out / 1-Clear Spacing",
+                courtSub: "One-on-One Breakdown",
+                summary: "An isolation set that clears one side of the court, giving your best scorer room to break down their defender one-on-one.",
+                steps: [
+                    "<b>The Clearout:</b> Four players space out along the perimeter and opposite wing, dragging their defenders away.",
+                    "<b>The Attack:</b> Scorer attacks the vacant side of the floor off the dribble.",
+                    "<b>Kick-Out Option:</b> If help defense rotates from the baseline, scorer kicks out to the open shooter."
+                ],
+                tip: "Spacers must stay completely still to prevent their defenders from stunting into the driving lane."
+            },
+            off_high_low: {
+                category: "Offense",
+                title: "High-Low Post Attack",
+                courtTitle: "Two-Big Post Pairing",
+                courtSub: "High Post to Low Post Feed",
+                summary: "A devastating two-big offensive set where the high post player delivers pinpoint bounce passes to the low post banger.",
+                steps: [
+                    "<b>High Post Catch:</b> Skilled big catches at the elbow while low big seals their defender on the block.",
+                    "<b>The High-Low Feed:</b> High post delivers a high-arcing or bounce pass over top of the defense to the low blocker.",
+                    "<b>Quick Finish:</b> Low blocker catches and powers up immediately for a high-percentage layup or foul."
+                ],
+                tip: "Timing and eye contact between the two post players are vital for success."
+            },
+            off_shuffle: {
+                category: "Offense",
+                title: "Shuffle Offense Continuity",
+                courtTitle: "Shuffle Cut Action",
+                courtSub: "Passing & Deceptive Cutting",
+                summary: "A classic motion offense featuring precise shuffle cuts, screen-the-screener action, and continuous ball movement.",
+                steps: [
+                    "<b>Shuffle Cut:</b> Perimeter player sets a screen allowing a teammate to shuffle-cut directly to the basket.",
+                    "<b>Replacement:</b> Passers and screeners constantly replace open spots along the perimeter.",
+                    "<b>Inside Scoring:</b> Generates high-percentage layups and mid-range jumpers through relentless ball movement."
+                ],
+                tip: "Execute sharp change-of-pace cuts to shake off persistent defenders."
+            },
+            off_ucla: {
+                category: "Offense",
+                title: "UCLA Cut Set",
+                courtTitle: "High Post Screen Cut",
+                courtSub: "Guard-to-Big Entry & Lob",
+                summary: "The legendary John Wooden offensive set featuring a guard cutting off a high post screen directly to the rim.",
+                steps: [
+                    "<b>Wing Entry:</b> Point guard passes to the wing and sprints toward the corner.",
+                    "<b>UCLA Screen:</b> High post player sets a hard back-screen for the cutting point guard.",
+                    "<b>Direct Finish:</b> Wing player delivers an immediate bounce pass or lob to the cutting guard."
+                ],
+                tip: "Set the back-screen squarely on the defender's blind side for maximum separation."
+            },
+            off_4out: {
+                category: "Offense",
+                title: "4-Out 1-In Motion",
+                courtTitle: "4 Perimeter / 1 Post Anchor",
+                courtSub: "Modern Space & Drive",
+                summary: "A modern spacing offense featuring four perimeter shooters and one dominant post player anchoring the low block.",
+                steps: [
+                    "<b>Perimeter Spacing:</b> Four shooters occupy the two wings and two corners, maintaining 15-foot spacing.",
+                    "<b>Drive & Kick:</b> Guards attack driving lanes, forcing the defense to collapse and leave shooters open.",
+                    "<b>Post Seal:</b> The lone interior player seals their defender on the ball-side low block."
+                ],
+                tip: "Perimeter players must keep their feet set and hands ready for catch-and-shoot kickouts."
+            },
+            off_3out: {
+                category: "Offense",
+                title: "3-Out 2-In Twin Post",
+                courtTitle: "Twin Post Rebounding",
+                courtSub: "Double Trouble Low Blocks",
+                summary: "A traditional power offense placing three guards on the perimeter and two dominant bigs on the low blocks.",
+                steps: [
+                    "<b>Twin Post Setup:</b> Two bigs occupy both low blocks, creating an imposing interior presence.",
+                    "<b>Perimeter Ball Reversal:</b> Guards swing the ball around the arc while looking for post entry feeds.",
+                    "<b>High Rebounding:</b> Two bigs inside guarantee superior offensive rebounding positioning on missed shots."
+                ],
+                tip: "Bigs must alternate sides to avoid clogging the paint for driving guards."
+            },
+            pb_full_diamond: {
+                category: "Press Break",
+                title: "Full-Court Diamond Press Break",
+                courtTitle: "Diamond Release Formation",
+                courtSub: "Beating Backcourt Traps",
+                summary: "A reliable press break formation utilizing a diamond shape to give the ball handler safe passing outlets against full-court traps.",
+                steps: [
+                    "<b>Formation:</b> Inbounder under basket, point guard top key, two wing outlets, and deep safety.",
+                    "<b>Safe Pass:</b> Inbounder passes to the open wing or point guard flashing toward the ball.",
+                    "<b>Attack Weakness:</b> Ball handler attacks the middle of the trap before defenders can recover."
+                ],
+                tip: "Never dribble blindly into a corner trap in the backcourt."
+            },
+            pb_full_sideline: {
+                category: "Press Break",
+                title: "Full-Court Sideline Attack",
+                courtTitle: "Sideline Corridor Flow",
+                courtSub: "Utilizing Sideline as Extra Defender",
+                summary: "A press break that uses the sideline as an extra boundary to streamline ball movement up the floor.",
+                steps: [
+                    "<b>Alignment:</b> Align three players along one sideline corridor to stretch the trapping defense.",
+                    "<b>Quick Reversal:</b> If trapped, quickly reverse the ball across the court to the weak-side safety.",
+                    "<b>Numerical Advantage:</b> Convert the numbers game into a 4-on-3 fast break advantage."
+                ],
+                tip: "Keep passes crisp and chest-high to prevent soft interceptions."
+            },
+            pb_full_long: {
+                category: "Press Break",
+                title: "Full-Court Long Ball Special",
+                courtTitle: "Deep Safety Bomber",
+                courtSub: "Punishing Over-Play Pressure",
+                summary: "An aggressive press break that sends a deep threat downcourt to punish overly aggressive trapping defenses.",
+                steps: [
+                    "<b>Deep Leak:</b> Athletic forward leaks deep down the opposite sideline behind the defense.",
+                    "<b>Inbound Bomb:</b> Inbounder delivers a pinpoint baseball pass or overhead heave to the sprinting forward.",
+                    "<b>Easy Two:</b> Forward catches and finishes with an uncontested layup."
+                ],
+                tip: "Only use when the defense is caught over-playing ball pressure in the backcourt."
+            },
+            pb_half_reverse: {
+                category: "Press Break",
+                title: "Half-Court Trap Reverse",
+                courtTitle: "Ball Reversal Overload",
+                courtSub: "Beating Half-Court Traps",
+                summary: "A structured counter to half-court sideline traps by immediately reversing the ball to the opposite side.",
+                steps: [
+                    "<b>Absorb Trap:</b> Ball handler keeps their dribble alive and absorbs the trap near the sideline.",
+                    "<b>Flash Outlet:</b> High post or weak-side guard flashes to the middle to receive the relief pass.",
+                    "<b>Quick Swing:</b> Ball is swung instantly to the weak side before the defense can recover."
+                ],
+                tip: "Patience and vision are essential to finding the open relief receiver."
+            },
+            pb_half_blitz: {
+                category: "Press Break",
+                title: "Half-Court Blitz Counter",
+                courtTitle: "Center Slash Attack",
+                courtSub: "Attacking Middle Vacuum",
+                summary: "A countermeasure against aggressive ball-screen blitzes, attacking the vacuum left behind the blitzing defenders.",
+                steps: [
+                    "<b>Slip Screen:</b> Screener slips the screen early and rolls directly down the middle seam.",
+                    "<b>Pocket Pass:</b> Ball handler delivers a quick pocket pass to the rolling big man.",
+                    "<b>Attack Rim:</b> Big man catches in space with a 4-on-3 advantage heading toward the basket."
+                ],
+                tip: "Make the decision quickly before help defense rotates to the middle."
+            },
+            pb_half_flash: {
+                category: "Press Break",
+                title: "Half-Court Flash Pivot",
+                courtTitle: "Elbow Flash Relief",
+                courtSub: "Releasing Pressure Quickly",
+                summary: "A reliable pressure release featuring quick high-elbow flashes to break trapping half-court defenses.",
+                steps: [
+                    "<b>Flash Cut:</b> Forward flashes hard from the baseline to the high-elbow foul line.",
+                    "<b>Direct Pass:</b> Trapped guard hits the flashing forward with a clean chest pass.",
+                    "<b>Playmaking:</b> Forward turns and faces the basket to shoot or pass to cutting guards."
+                ],
+                tip: "Catch with two hands and chin the ball immediately."
+            },
+            ib_box_lob: {
+                category: "Inbounds",
+                title: "BLOB: Box Lob Special",
+                courtTitle: "Baseline Box Setup",
+                courtSub: "Lob Over Zone / Man Defense",
+                summary: "A high-flying baseline out-of-bounds play designed to catch the defense sleeping with a lob over the top.",
+                steps: [
+                    "<b>Box Alignment:</b> Four players form a box formation along the lane line under the basket.",
+                    "<b>Screen & Lob:</b> Two inside players set back-screens while the athletic shooter lobs toward the rim.",
+                    "<b>Finish:</b> Catch and finish with authority above the rim."
+                ],
+                tip: "Timing between the inbounder's pass and the cutter's jump must be precise."
+            },
+            ib_shooter_scr: {
+                category: "Inbounds",
+                title: "BLOB: Shooter Screen",
+                courtTitle: "Double Screen Baseline",
+                courtSub: "Corner Three-Pointer",
+                summary: "A baseline out-of-bounds set utilizing double screens to spring your best three-point shooter wide open in the corner.",
+                steps: [
+                    "<b>Double Screen:</b> Two bigs set a staggered double screen along the baseline.",
+                    "<b>Shooter Loop:</b> Shooter races around the screens toward the corner or wing.",
+                    "<b>Clean Catch:</b> Inbounder delivers a crisp pass for an immediate catch-and-shoot jumper."
+                ],
+                tip: "Shooter must brush shoulders with the screeners to shake trailing defenders."
+            },
+            ib_return_layup: {
+                category: "Inbounds",
+                title: "BLOB: Return Cut Layup",
+                courtTitle: "Give-and-Go Inbound",
+                courtSub: "Quick Passing & Cutting",
+                summary: "A simple yet effective baseline out-of-bounds play utilizing a quick give-and-go return pass for an easy layup.",
+                steps: [
+                    "<b>Pass In:</b> Inbounder passes to the wing player stepping up toward the ball.",
+                    "<b>Return Cut:</b> Inbounder immediately cuts hard around the receiver toward the basket.",
+                    "<b>Layup Feed:</b> Receiver delivers a bounce pass back to the cutting inbounder for a layup."
+                ],
+                tip: "Cutter must explode past their defender immediately after releasing the inbound pass."
+            },
+            ib_box_counter: {
+                category: "Inbounds",
+                title: "BLOB: Box Counter Set",
+                courtTitle: "Deceptive Box Action",
+                courtSub: "Countering Over-Play Defense",
+                summary: "A deceptive baseline out-of-bounds counter play that punishes defenses trying to jump the initial box play.",
+                steps: [
+                    "<b>False Movement:</b> Players fake setting screens for the shooter to draw defensive attention.",
+                    "<b>Counter Cut:</b> The primary screener slips away from the screen for an uncontested layup on the opposite block.",
+                    "<b>Inbound Feed:</b> Inbounder delivers a soft bounce pass for the score."
+                ],
+                tip: "Read how the defense defends the initial screen before making your cut."
+            },
+            ib_square_cut: {
+                category: "Inbounds",
+                title: "BLOB: Square Cut Play",
+                courtTitle: "Perimeter Square Action",
+                courtSub: "Mid-Range Jump Shot",
+                summary: "A baseline out-of-bounds play designed to generate open 15-foot jump shots along the perimeter.",
+                steps: [
+                    "<b>Square Pattern:</b> Players cut in a square pattern around the key to tangle defenders.",
+                    "<b>Pop Out:</b> Target shooter pops out to the free-throw line extended.",
+                    "<b>Catch & Shoot:</b> Clean catch and rhythm jump shot."
+                ],
+                tip: "Ensure players maintain proper spacing so their cutting paths do not collide."
+            },
+            sl_right_1: {
+                category: "Sideline",
+                title: "Sideline Right: UCLA Cut",
+                courtTitle: "Sideline UCLA Action",
+                courtSub: "Back-Screen Layup",
+                summary: "A sideline out-of-bounds play bringing the ball in on the right side and utilizing a UCLA back-screen for a layup.",
+                steps: [
+                    "<b>Sideline Entry:</b> Pass comes in from the right sideline to the top guard.",
+                    "<b>UCLA Screen:</b> High post sets a back-screen for the cutting wing player.",
+                    "<b>Rim Finish:</b> Direct pass to the cutter for an uncontested layup."
+                ],
+                tip: "Initiate the play immediately upon the referee's whistle."
+            },
+            sl_right_2: {
+                category: "Sideline",
+                title: "Sideline Right: Stagger Screen",
+                courtTitle: "Staggered Right Wing",
+                courtSub: "Perimeter Shooter Action",
+                summary: "A sideline out-of-bounds play generating open perimeter jump shots via staggered screens on the right wing.",
+                steps: [
+                    "<b>Alignment:</b> Two screeners set staggered screens on the right wing.",
+                    "<b>Shooter Loop:</b> Guard loops around both screens toward the top of the key.",
+                    "<b>Catch & Shoot:</b> Pass from inbounder leads directly into a jump shot."
+                ],
+                tip: "Screeners must use physical body positioning to block pursuing defenders."
+            },
+            sl_right_3: {
+                category: "Sideline",
+                title: "Sideline Right: DHO ISO",
+                courtTitle: "Dribble Hand-Off Setup",
+                courtSub: "Explosive Perimeter DHO",
+                summary: "A sideline play utilizing a high-speed dribble hand-off to launch your fastest guard down the sideline.",
+                steps: [
+                    "<b>Pass In:</b> Ball is passed into the wing player.",
+                    "<b>DHO Action:</b> Point guard sprints over for a tight dribble hand-off (DHO).",
+                    "<b>Explode:</b> Guard turns the corner and explodes down the sideline for a drive or pull-up."
+                ],
+                tip: "Guard receiving the hand-off must take off the instant the ball is secured."
+            },
+            sl_left_1: {
+                category: "Sideline",
+                title: "Sideline Left: Horns Set",
+                courtTitle: "Left Horns Alignment",
+                courtSub: "Elbow Pick-and-Roll",
+                summary: "A sideline out-of-bounds play starting in a Horns alignment on the left side of the floor.",
+                steps: [
+                    "<b>Horns Setup:</b> Two bigs occupy left and right elbows; shooters space corners.",
+                    "<b>Entry Pass:</b> Ball is passed to the left elbow big.",
+                    "<b>Pick-and-Roll:</b> Guard receives hand-off and rolls into a high-speed pick-and-roll."
+                ],
+                tip: "Execute sharp passing angles to initiate the play without delay."
+            },
+            sl_left_2: {
+                category: "Sideline",
+                title: "Sideline Left: Backdoor Play",
+                courtTitle: "Left Wing Overplay Counter",
+                courtSub: "Surprise Backdoor Cut",
+                summary: "A sideline play on the left side that punishes defenses overplaying the wing passing lane.",
+                steps: [
+                    "<b>Overplay Read:</b> Defender overplays the wing passing lane aggressively.",
+                    "<b>Backdoor Cut:</b> Receiver fakes out, plants, and cuts hard backdoor to the rim.",
+                    "<b>Lob Pass:</b> Inbounder loops a precise bounce pass over the defender's outstretched arms."
+                ],
+                tip: "Sell the fake catch before exploding toward the basket."
+            },
+            sl_left_3: {
+                category: "Sideline",
+                title: "Sideline Left: Drive ISO",
+                courtTitle: "Left Side Clearout",
+                courtSub: "One-on-One Sideline Drive",
+                summary: "A sideline out-of-bounds isolation play clearing the left side for an explosive one-on-one drive.",
+                steps: [
+                    "<b>Clearout:</b> Three players clear out to the right side of the court.",
+                    "<b>Isolation Pass:</b> Pass goes to the left wing isolator with a wide-open driving lane.",
+                    "<b>Rim Attack:</b> Driver attacks the baseline for a layup or foul."
+                ],
+                tip: "Maintain floor spacing to prevent secondary defenders from stepping in."
+            },
+            ls_full: {
+                category: "Game Winner",
+                title: "Full Court Game Winner (0.8s)",
+                courtTitle: "94-Foot Hail Mary",
+                courtSub: "Tip-In / Air-Borne Catch",
+                summary: "A desperation full-court play with under 1 second remaining, designed for a tip-in or airborne catch-and-shoot.",
+                steps: [
+                    "<b>Deep Stack:</b> Four players stack along the baseline ready to sprint in different directions.",
+                    "<b>Baseball Heave:</b> Inbounder throws a high-velocity 94-foot baseball pass toward the rim.",
+                    "<b>Airborne Tip:</b> Tallest player leaps to tip the ball directly into the basket before the buzzer."
+                ],
+                tip: "Focus solely on catching and releasing the ball within 0.8 seconds."
+            },
+            ls_3qtr: {
+                category: "Game Winner",
+                title: "3/4 Court Game Winner (3-5s)",
+                courtTitle: "75-Foot Quick Strike",
+                courtSub: "Catch, Dribble & Shoot",
+                summary: "A quick-strike play with 3 to 5 seconds remaining, giving your team enough time for one dribble and a pull-up jump shot.",
+                steps: [
+                    "<b>Outlet Pass:</b> Inbounder hits the receiver near the three-quarter court line.",
+                    "<b>Speed Dribble:</b> Receiver takes one power dribble across the timeline to gain momentum.",
+                    "<b>Game Winner:</b> Pull-up jumper or driving layup before time expires."
+                ],
+                tip: "Know exactly how many seconds remain so you don't shoot too early or too late."
+            },
+            ls_half: {
+                category: "Game Winner",
+                title: "Half-Court Game Winner (5-8s)",
+                courtTitle: "50-Foot Play Call",
+                courtSub: "Screen & Pop Final Shot",
+                summary: "A tactical half-court play with 5 to 8 seconds left, using a high screen to free your best clutch shooter.",
+                steps: [
+                    "<b>Alignment:</b> 4-out spacing with your best shooter positioned on the wing.",
+                    "<b>High Screen:</b> Big man sets a hard ball screen at the top of the key.",
+                    "<b>Clutch Shot:</b> Shooter uses the screen to pull up for a game-winning jump shot."
+                ],
+                tip: "Ensure your shooter gets the ball with enough time for a balanced, unhurried shot."
+            },
+            ls_side: {
+                category: "Game Winner",
+                title: "Sideline Game Winner (3s)",
+                courtTitle: "Sideline Final Possession",
+                courtSub: "Staggered Screen Winner",
+                summary: "A sideline out-of-bounds play with 3 seconds left, utilizing staggered screens to generate a game-winning shot.",
+                steps: [
+                    "<b>Screen Setup:</b> Staggered screens set on the wing or top of the key.",
+                    "<b>Shooter Break:</b> Clutch shooter breaks free off the screens toward the ball.",
+                    "<b>Final Shot:</b> Catch and immediate release before the defense can contest."
+                ],
+                tip: "Every player must execute their screen with absolute precision."
+            },
+            ls_under: {
+                category: "Game Winner",
+                title: "Under Basket Game Winner (2-4s)",
+                courtTitle: "Baseline Final Play",
+                courtSub: "Quick Layup / Buzzer Beater",
+                summary: "A baseline out-of-bounds play with 2 to 4 seconds remaining, designed for a quick layup or game-winning jumper.",
+                steps: [
+                    "<b>Box Formation:</b> Players align in a tight box under the basket.",
+                    "<b>Simultaneous Cuts:</b> Two players cut hard to opposite corners while the main shooter cuts to the rim.",
+                    "<b>Buzzer Beater:</b> Quick pass and immediate shot before the horn sounds."
+                ],
+                tip: "Keep passes simple and accurate to avoid costly turnovers."
+            }
+        };
+
+        function loadPlay(playKey, btnElement) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.play-btn').forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            btnElement.classList.add('active');
+
+            const play = playbookData[playKey];
+            if (!play) return;
+
+            // Update display content
+            document.getElementById('displayTitle').innerText = play.title;
+            document.getElementById('displayCategory').innerText = play.category;
+            document.getElementById('displayCourtTitle').innerText = play.courtTitle;
+            document.getElementById('displayCourtSub').innerText = play.courtSub;
+            document.getElementById('displaySummary').innerText = play.summary;
+
+            const stepsList = document.getElementById('displaySteps');
+            stepsList.innerHTML = '';
+            play.steps.forEach(step => {
+                const li = document.createElement('li');
+                li.innerHTML = step;
+                stepsList.appendChild(li);
+            });
+
+            document.getElementById('displayCoachingTip').innerText = play.tip;
+
+            // Smooth scroll to display box on mobile devices
+            document.getElementById('displayBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
