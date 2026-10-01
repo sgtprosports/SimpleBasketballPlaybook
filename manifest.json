@@ -2,6 +2,7 @@
   "name": "MASTER BASKETBALL TACTICAL PLAYBOOK",
   "short_name": "Playbook Pro",
   "start_url": "/SimpleBasketballPlaybook/",
+  "scope": "/SimpleBasketballPlaybook/",
   "display": "standalone",
   "background_color": "#002366",
   "theme_color": "#DA291C",
@@ -10,7 +11,8 @@
     {
       "src": "logo.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
